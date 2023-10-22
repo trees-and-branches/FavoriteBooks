@@ -48,10 +48,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorite Books" id="f0d-F9-JRK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gLf-vC-9w7"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gLf-vC-9w7">
+                            <connections>
+                                <segue destination="6E7-VU-Lwo" kind="show" id="u3e-qb-hX5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="6E7-VU-Lwo" kind="show" id="Xaj-g8-cic"/>
+                        <segue destination="6E7-VU-Lwo" kind="show" destinationCreationSelector="editBook2:sender:" id="BdM-Ha-ohT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15Z-0e-IzJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -194,7 +198,7 @@
                                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                     <connections>
                                                         <action selector="saveButtonTapped:" destination="6E7-VU-Lwo" eventType="touchUpInside" id="fjf-h0-5Dx"/>
-                                                        <segue destination="8Fl-Aw-asS" kind="unwind" unwindAction="prepareForUnwindWithSegue:" id="JFq-th-2eT"/>
+                                                        <segue destination="8Fl-Aw-asS" kind="unwind" identifier="UnwindToBookTable" unwindAction="prepareForUnwindWithSegue:" id="JFq-th-2eT"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -219,9 +223,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eq6-U4-IGO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="8Fl-Aw-asS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="900" y="365"/>
+            <point key="canvasLocation" x="958" y="365"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="BdM-Ha-ohT"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

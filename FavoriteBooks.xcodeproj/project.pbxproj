@@ -46,7 +46,6 @@
 		188F675D23AC01B0007E2064 = {
 			isa = PBXGroup;
 			children = (
-				EAD584982AE0D389005C73E8 /* BookFormTableViewController.swift */,
 				188F676823AC01B0007E2064 /* FavoriteBooks */,
 				188F676723AC01B0007E2064 /* Products */,
 			);
@@ -68,6 +67,7 @@
 				188F677F23AC025B007E2064 /* Book.swift */,
 				188F678123AC0292007E2064 /* BookTableViewController.swift */,
 				188F678323AC0394007E2064 /* BookFormViewController.swift */,
+				EAD584982AE0D389005C73E8 /* BookFormTableViewController.swift */,
 				188F676B23AC01B0007E2064 /* SceneDelegate.swift */,
 				188F677223AC01B1007E2064 /* Assets.xcassets */,
 				188F677423AC01B1007E2064 /* LaunchScreen.storyboard */,

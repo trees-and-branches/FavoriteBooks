@@ -16,6 +16,7 @@ class BookTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books.count
@@ -33,10 +34,13 @@ class BookTableViewController: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            books.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     // MARK: - Navigation
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
@@ -44,35 +48,27 @@ class BookTableViewController: UITableViewController {
             let book = source.book else {return}
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            books.remove(at: indexPath.row)
-            books.insert(book, at: indexPath.row)
+            print(indexPath.row)
+            books.remove( at: indexPath.row)
+            books.insert(book, at: indexPath.row) // this is where books are edited (removed and replaced)
+            print(indexPath.row)
             tableView.deselectRow(at: indexPath, animated: true)
         } else {
-            books.append(book)
+            books.append(book) // this is where new books are added
         }
     }
     
-  
-    @IBSegueAction func editBook2(_ coder: NSCoder, sender: Any?) -> BookFormTableViewController? {
+    
+    @IBSegueAction func editBook(_ coder: NSCoder, sender: Any?) -> BookFormTableViewController? {
+    
         guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
             return nil
         }
         
         let book = books[indexPath.row]
         
-        return BookFormTableViewController(coder: coder, book: book)    }
+        return BookFormTableViewController(coder: coder, book: book)
+    }
     
     
 }
-//    @IBSegueAction func editBook(_ coder: NSCoder, sender: Any?) -> BookFormTableViewController? {
-//
-//        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
-//            return nil
-//        }
-//
-//        let book = books[indexPath.row]
-//
-//        return BookFormTableViewController(coder: coder, book: book)
-//    }
-//
-//

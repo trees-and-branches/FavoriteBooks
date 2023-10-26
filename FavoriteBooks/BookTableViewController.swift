@@ -1,7 +1,8 @@
 import UIKit
 
 class BookTableViewController: UITableViewController {
-    
+   
+
     var books: [Book] = []
     
     override func viewDidLoad() {
@@ -23,14 +24,16 @@ class BookTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as! BookTableViewCell
+            
 
         let book = books[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = book.title
-        content.secondaryText = book.description
-        cell.contentConfiguration = content
-
+//        var content = cell.defaultContentConfiguration()
+//        content.text = book.title
+//        content.secondaryText = book.description
+//        cell.contentConfiguration = content
+        cell.update(with: book)
+        
         return cell
     }
     
@@ -41,6 +44,7 @@ class BookTableViewController: UITableViewController {
         }
     }
     
+
     // MARK: - Navigation
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
